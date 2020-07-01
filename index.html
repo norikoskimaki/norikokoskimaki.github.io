@@ -334,29 +334,34 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <!--Contact Form-->
-                        <form id='contact-form' method='POST'><input type='hidden' name='form-name' value='contactForm' />
+                        <form id='contact-form-g' method='POST' action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdQEti5bkIMvLNuKlRJkGA7sMDoFCDh2iaN90NxtC0cXj1M8g/formResponse" target="dummyIframe" name="myForm">
+                            <input type='hidden' name='form-name' value='contactForm' />
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <!--name-->
-                                    <input type="text" class="form-control con-validate" id="contact-name" placeholder="Name" minlength=3 >
+                                    <input type="text" class="form-control con-validate" id="contact-name" placeholder="Name" minlength=3 name="entry.1100684387">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <!--email-->
-                                    <input type="email" class="form-control con-validate" id="contact-email" placeholder="Email" >
+                                    <input type="email" class="form-control con-validate" id="contact-email" placeholder="Email" autocomplete="email" name="emailAddress">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <!--message box-->
-                                    <textarea class="form-control con-validate" id="contact-message" placeholder="How can we help you?" rows=6 ></textarea>
+                                    <textarea class="form-control con-validate" id="contact-message" placeholder="How can we help you?" rows=6 name="entry.515685938"></textarea>
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <!--contact button-->
-                                    <button id="contact-submit" class="mt-30 main-btn">
+                                    <button id="contact-submit" class="mt-30 main-btn" onclick="sendGform()">
                                         Send Message
                                     </button>
                                 </div>
                             </div>
                         </form>
+                        <!--dummy frame for stop forwarding to Google Form-->
+                        <iframe name="dummyIframe" style="display:none;"></iframe>
                     </div>
+                        <!--Thank you message-->
+                        <div id="thxMessage" style="display:none; margin: auto;">Thank you for your message!</div>
                 </div>
             </div>
         </section>
@@ -394,6 +399,14 @@
         <script src="js/jquery.magnific-popup.min.js"></script>
         <!--Site Main js-->
         <script src="js/main.js"></script>
+        <!--Contact form message js-->
+        <script>
+            function sendGform(){
+            document.myForm.submit();
+            document.getElementById('contact-form-g').style.display = 'none';
+            document.getElementById('thxMessage').style.display = 'block';
+            }
+            </script>
 
     </body>
 </html>
